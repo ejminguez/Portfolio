@@ -36,30 +36,35 @@
 
 <style>
   .gallery-container {
-    padding-top: 40px;
+    padding-top: 10px;
   }
 
   .header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 28px;
+    padding: 18px 14px;
+    border: 1px solid var(--border-color);
+    background: linear-gradient(to bottom, #ffffff, #e9f0f7);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
   .title {
-    font-size: 3.5rem;
-    margin-bottom: 16px;
+    font-size: 2.15rem;
+    margin-bottom: 8px;
+    color: #27435f;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
   }
 
   .masonry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
   }
 
   .loader {
@@ -71,9 +76,9 @@
   .spinner {
     width: 40px;
     height: 40px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 5px solid #c7d6e6;
     border-radius: 50%;
-    border-top-color: var(--accent-secondary);
+    border-top-color: var(--accent-primary);
     animation: spin 1s ease-in-out infinite;
   }
 
@@ -83,11 +88,17 @@
 
   @media (max-width: 768px) {
     .title {
-      font-size: 2.5rem;
+      font-size: 1.65rem;
     }
+
+    .header {
+      margin-bottom: 18px;
+      padding: 14px 10px;
+    }
+
     .masonry-grid {
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 14px;
     }
   }
 </style>

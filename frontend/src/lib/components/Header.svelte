@@ -4,7 +4,7 @@
 
 <header>
   <div class="logo">
-    <a href="#">Errol<span class="text-gradient">Minguez</span></a>
+    <a href="#software">Errol <span class="text-gradient">Minguez</span></a>
   </div>
   <nav>
     <a href="#software" class={currentRoute === 'software' ? 'active' : ''}>Software Dev</a>
@@ -18,63 +18,74 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
-    background: var(--bg-color-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
+    padding: 0 24px;
+    background: linear-gradient(to bottom, #f8fbfe, #d8e4f0);
+    border-bottom: 1px solid var(--border-dark);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 1px 3px rgba(0, 0, 0, 0.15);
     z-index: 100;
   }
-  
+
   .logo a {
     font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: -0.03em;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #26405b;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
   nav {
     display: flex;
-    gap: 32px;
+    gap: 8px;
   }
 
   nav a {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #35506c;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border: 1px solid #9eafc1;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #ffffff, #dfe9f3);
+    padding: 8px 12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
     transition: var(--transition-fast);
-    position: relative;
   }
 
   nav a:hover, nav a.active {
-    color: var(--text-primary);
-  }
-
-  nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-gradient);
-    transition: var(--transition-fast);
-  }
-
-  nav a:hover::after, nav a.active::after {
-    width: 100%;
+    color: #ffffff;
+    border-color: #2a77be;
+    background: linear-gradient(to bottom, #4ca8ff, #2f8de4);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   }
 
   @media (max-width: 768px) {
     header {
-      padding: 0 20px;
+      height: 70px;
+      padding: 8px 12px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
     }
+
+    .logo a {
+      font-size: 1.05rem;
+    }
+
     nav {
-      gap: 16px;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      font-size: 0.76rem;
+      padding: 6px 8px;
     }
   }
 </style>

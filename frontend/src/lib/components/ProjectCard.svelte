@@ -19,18 +19,6 @@
     {:else}
       <div class="placeholder-image"></div>
     {/if}
-    <div class="card-overlay">
-      {#if link}
-        <a href={link} target="_blank" rel="noopener noreferrer" class="action-btn">
-          <span>View Live</span>
-        </a>
-      {/if}
-      {#if github}
-        <a href={github} target="_blank" rel="noopener noreferrer" class="action-btn outline">
-          <span>GitHub</span>
-        </a>
-      {/if}
-    </div>
   </div>
   
   <div class="card-content">
@@ -39,6 +27,15 @@
     </div>
     <h3 class="card-title">{title}</h3>
     <p class="card-desc">{description}</p>
+
+    <div class="card-actions">
+      {#if link}
+        <a href={link} target="_blank" rel="noopener noreferrer" class="action-btn">View Live</a>
+      {/if}
+      {#if github}
+        <a href={github} target="_blank" rel="noopener noreferrer" class="action-btn outline">GitHub</a>
+      {/if}
+    </div>
     
     {#if techStack.length > 0}
       <div class="tech-stack">
@@ -52,20 +49,19 @@
 
 <style>
   .project-card {
-    background: var(--bg-color-elevated);
+    background: linear-gradient(to bottom, #ffffff, #f2f6fa);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    transition: var(--transition-slow);
+    transition: var(--transition-fast);
     display: flex;
     flex-direction: column;
     height: 100%;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
   .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--border-color-hover);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--border-dark);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 2px 5px rgba(0, 0, 0, 0.14);
   }
 
   .card-image-wrapper {
@@ -73,117 +69,108 @@
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: #1a1a1a;
+    background: #d7e1ec;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .card-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s ease;
   }
 
   .project-card:hover .card-image-wrapper img {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
 
   .placeholder-image {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #111, #222);
-  }
-
-  .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    opacity: 0;
-    transition: var(--transition-fast);
-  }
-
-  .project-card:hover .card-overlay {
-    opacity: 1;
+    background: linear-gradient(to bottom, #dfe8f2, #c9d7e6);
   }
 
   .action-btn {
-    padding: 10px 20px;
-    border-radius: 30px;
-    background: var(--text-primary);
-    color: var(--bg-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    padding: 7px 12px;
+    border: 1px solid #2a77be;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #4ca8ff, #2f8de4);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
+    transition: var(--transition-fast);
   }
 
   .action-btn.outline {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--text-primary);
-  }
-
-  .project-card:hover .action-btn {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  .project-card:hover .action-btn:nth-child(2) {
-    transition-delay: 50ms;
+    border-color: #8ca0b4;
+    background: linear-gradient(to bottom, #f8fbff, #dce6f0);
+    color: #31506f;
+    text-shadow: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
   .action-btn:hover {
-    transform: scale(1.05) !important;
+    background: linear-gradient(to bottom, #5db2ff, #3798f0);
+  }
+
+  .action-btn.outline:hover {
+    background: linear-gradient(to bottom, #ffffff, #e8eff7);
   }
 
   .card-content {
-    padding: 24px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
   .category {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--accent-primary);
-    background: rgba(59, 130, 246, 0.1);
-    padding: 4px 10px;
-    border-radius: 20px;
+    letter-spacing: 0.04em;
+    color: #2a6eaf;
+    background: #e5f1ff;
+    padding: 3px 7px;
+    border: 1px solid #bdd8f5;
   }
 
   .card-title {
-    font-size: 1.4rem;
-    margin: 12px 0 8px;
-    color: var(--text-primary);
+    font-size: 1.18rem;
+    margin: 10px 0 6px;
+    color: #29435f;
   }
 
   .card-desc {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    margin-bottom: 24px;
-    flex: 1;
+    margin-bottom: 12px;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
   }
 
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     margin-top: auto;
   }
 
   .tech-tag {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 4px 12px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
+    font-size: 0.72rem;
+    color: #4d6075;
+    background: #e8eef5;
+    padding: 3px 7px;
+    border: 1px solid #c6d2df;
   }
 </style>
